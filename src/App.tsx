@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ChakraProvider } from '@chakra-ui/react'
+import { Routes,Route } from 'react-router-dom'
+import { AdminSide } from './routes/AdminSide'
+import UserSide from './routes/UserSide'
+import { SkeletonTheme } from 'react-loading-skeleton'
+import FoodProvider from './context/FoodContext/FoodProvider'
+import LoginProvider from './context/LoginContext/LoginProvider'
+import { AdminLoginForm, AdminProtectedroute } from './pages/AdminPages/AdminLogin'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LoginProvider>
+      <FoodProvider>
+        <SkeletonTheme highlightColor="#f1f2f6" duration={2}>
+        <ChakraProvider>
+        <div className="App">
+        <Routes>
+          <Route path='*' element={<UserSide/>} />
+          <Route path='/admin/*' element={<AdminProtectedroute><AdminSide/></AdminProtectedroute>} />
+          <Route path='/admin-dangnhap' element={<AdminLoginForm/>} />
+        </Routes>
+        </div>
+      </ChakraProvider>
+      </SkeletonTheme>
+    </FoodProvider>
+    </LoginProvider>
   );
 }
 

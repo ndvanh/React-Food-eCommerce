@@ -1,0 +1,7 @@
+export {default as Header} from'./Header'
+export {default as Footer} from'./Footer'
+export {default as ScrollToTop} from'./ScrollToTop'
+export {default as BackToTop} from'./BackToTop'
+export {default as SearchProduct} from'./SearchProduct'
+export {default as PCNav} from'./PCNav'
+export {default as TabLetMobileNav} from'./TabLetMobileNav'

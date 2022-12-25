@@ -1,0 +1,7 @@
+export {default as Home} from './Home'
+export {default as FoodMenu} from './FoodPages/FoodMenu'
+export {default as FoodType} from './FoodPages/FoodType'
+export {default as NotFound} from './NotFound'
+export {default as Promotion} from './Promotion'
+export {default as Contact} from './Contact'
+export {default as FoodMenuDefault} from './FoodPages/FoodMenuDefault'
