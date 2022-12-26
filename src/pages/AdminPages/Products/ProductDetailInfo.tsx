@@ -25,7 +25,7 @@ const ProductDetailInfo = () => {
               <li className='py-3'>Giá sản phẩm: <b>{formatVND(prodItem?.prodPrice)}</b></li>
               <li className='py-3'>Mô tả sản phẩm: <b>{prodItem?.prodDetail}</b></li>
               <li className='py-3'>Số lượng: <b>{prodItem?.quantity}</b></li>
-              <li className='py-3'>Trạng thái khuyến mãi: <b>{prodItem?.saleOff === true ? 'Đang khuyến mãi' : 'Không khuyến mãi'}</b></li>
+              <li className='py-3'>Trạng thái khuyến mãi: <b>{prodItem?.saleOff === 'khuyen-mai' ? 'Đang khuyến mãi' : 'Không khuyến mãi'}</b></li>
               <li className='py-3'>Đăng ngày: <b>{convertDate(prodItem?.createdAt)}</b></li>
               <li className='py-3'>Ngày thay đổi gần nhất: <b>{convertDate(prodItem?.updatedAt)}</b></li>
             </ol>

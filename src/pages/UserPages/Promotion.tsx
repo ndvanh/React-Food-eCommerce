@@ -30,7 +30,7 @@ const Promotion = () => {
       setProFood(pricesGoDown)
     }
   }
-  const filProdPromotion = proFood.filter(item=>item.saleOff === true)
+  const filProdPromotion = proFood.filter(item=>item.saleOff === 'khuyen-mai')
   return (
     <section className='max-w-[1200px] m-auto lg:px-5'>
       <h1 className='text-[40px] md:text-[30px] sm:text-[25px] py-5 overflow-hidden relative font-semibold text-maincolor after:h-[2px] after:w-full after:bg-text2 after:absolute after:ml-[30px] after:top-[58%]'>Khuyến mãi cực lớn</h1>

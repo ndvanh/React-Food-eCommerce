@@ -1,8 +1,12 @@
 import { useToast } from "@chakra-ui/react"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import {CartItem } from "../api/productAPI"
+import { LoginContext } from "../context/LoginContext/LoginContext"
 
 const useAddToCart = () => {
+  const {userAcc} : any = useContext(LoginContext)
+  const navigate = useNavigate()
   const [cartList,setCartList] = useState<CartItem[]>(()=>{
     // @ts-ignore
     const savedProduct = JSON.parse(localStorage.getItem('product_list'))
@@ -10,6 +14,7 @@ const useAddToCart = () => {
   })
   const toast = useToast()
   const handleAddToCart = (product : CartItem) => {
+   if(userAcc) {
     setCartList((prev) => {
       if(cartList.some(item=> item._id === product._id)) {
         return [...prev]
@@ -39,6 +44,8 @@ const useAddToCart = () => {
           isClosable: true,
         })
     }
+   }
+   else navigate('/dang-nhap')
     
   } 
   const [prodQuantity,setProdQuantity] = useState<number[]>([1])

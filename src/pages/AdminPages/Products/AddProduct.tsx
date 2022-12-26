@@ -144,7 +144,7 @@ const AddProduct = () => {
         <input 
          {...register('prodPrice',{required:true})} 
           onChange={handleAddChange} 
-          type='number' 
+          type='text' 
           name="prodPrice" 
           id='prodPrice' 
           className='p-1 focus:outline-none border-[1px] text-black w-[70%] md:w-full mt-1'/>
@@ -166,7 +166,7 @@ const AddProduct = () => {
         <input 
          {...register('quantity',{required:true})} 
           onChange={handleAddChange} 
-          type='number' 
+          type='text' 
           name="quantity" 
           id='quantity' 
           className='p-1 focus:outline-none border-[1px] text-black w-[70%] md:w-full mt-1'/>
@@ -175,8 +175,8 @@ const AddProduct = () => {
       <fieldset className='py-4 text-maintext'>
         <label htmlFor="saleOff" className='text-maintext'>Trạng thái khuyến mãi:</label> <br/>
         <RadioGroup  onChange={handleRadio}>
-          <Radio value='true' colorScheme='orange'>Khuyến mãi</Radio>
-          <Radio value='false' className='ml-5' colorScheme='orange'>Không khuyến mãi</Radio>
+          <Radio value='khuyen-mai' colorScheme='orange'>Khuyến mãi</Radio>
+          <Radio value='khong-khuyen-mai' className='ml-5' colorScheme='orange'>Không khuyến mãi</Radio>
         </RadioGroup>
       </fieldset>
         <button  type='submit' className='bg-maincolor text-white h-[40px] w-[120px] rounded-[5px] cursor-pointer hover:brightness-90 duration-200'>Thêm</button>

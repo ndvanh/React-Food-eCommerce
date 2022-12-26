@@ -9,7 +9,7 @@ export interface ProdItem{
     prodPrice : number,
     prodDetail : string,
     quantity : number,
-    saleOff:boolean,
+    saleOff:string,
     createdAt:string,
   }
 export interface CartItem extends ProdItem{

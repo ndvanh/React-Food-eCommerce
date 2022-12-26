@@ -137,7 +137,7 @@ const UpdateOrder = () => {
         </fieldset>
         <fieldset className='py-4 text-maintext'>
           <label htmlFor="paymentMethods" className='text-maintext'>Phương thức thanh toán:</label> <br/>
-          <RadioGroup onChange={handleRadio}>
+          <RadioGroup onChange={handleRadio} defaultValue={order?.paymentMethods}>
             <Radio value='tien-mat' colorScheme='orange'>Thanh toán tiền mặt</Radio>
             <Radio value='the' className='ml-5' colorScheme='orange'>Thanh toán bằng thẻ</Radio>
           </RadioGroup>

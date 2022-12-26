@@ -124,7 +124,7 @@ const UpdateProduct = () => {
         <input 
          {...register('prodPrice',{required:true})} 
           onChange={handleUpdateChange} 
-          type='number' 
+          type='text' 
           name="prodPrice" 
           id='prodPrice' 
           value= {prodItem?.prodPrice} 
@@ -157,9 +157,9 @@ const UpdateProduct = () => {
       </fieldset>
       <fieldset className='py-4 text-maintext'>
         <label htmlFor="saleOff" className='text-maintext'>Trạng thái khuyến mãi:</label> <br/>
-        <RadioGroup onChange={handleRadio}>
-          <Radio value='true' colorScheme='orange'>Khuyến mãi</Radio>
-          <Radio value='false' className='ml-5' colorScheme='orange'>Không khuyến mãi</Radio>
+        <RadioGroup onChange={handleRadio} defaultValue={prodItem?.saleOff}>
+          <Radio value='khuyen-mai' colorScheme='orange'>Khuyến mãi</Radio>
+          <Radio value='khong-khuyen-mai' className='ml-5' colorScheme='orange'>Không khuyến mãi</Radio>
         </RadioGroup>
       </fieldset>
         <button  type='submit' className='bg-maincolor text-white h-[40px] w-[120px] rounded-[5px] cursor-pointer hover:brightness-90 duration-200'>Sửa</button>

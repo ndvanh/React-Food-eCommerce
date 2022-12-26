@@ -48,7 +48,7 @@ const HomePromotion = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-      {proFood?.filter(item=>item.saleOff === true).map((item,index)=>(
+      {proFood?.filter(item=>item.saleOff === 'khuyen-mai').map((item,index)=>(
         <SwiperSlide key={item._id}>
         <div className='border-[1px] rounded-[10px] p-3 shadow-md flex flex-col justify-between'>
         <Link to={`/thuc-don/${item.prodType}/${item.prodName}`}>

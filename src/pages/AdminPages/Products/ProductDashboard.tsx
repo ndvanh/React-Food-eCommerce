@@ -138,7 +138,7 @@ const ProductDashboard = () => {
                         </td>
                         <td className="py-2 px-6">{formatVND(item.prodPrice)}</td>
                         <td className="py-2 px-6">{item.quantity}</td>
-                        <td className="py-2 px-6 text-center">{item.saleOff === true ? 
+                        <td className="py-2 px-6 text-center">{item.saleOff === 'khuyen-mai' ? 
                          <i title="Khuyến mãi" className="fa-solid fa-circle-check text-green-400 text-[16px] mr-5"></i> : 
                          <i title="Không khuyến mãi" className="fa-solid fa-circle-xmark text-red-400 text-[16px] mr-5"></i>}</td>
                         <td className="py-2 px-6">

@@ -12,7 +12,7 @@ const initialProdState = {
   prodImg : '',
   prodPrice : 0,
   prodDetail : '',
-  saleOff:true,
+  saleOff:'',
   createdAt:''
 }
 const ProductDetail = () => {
@@ -59,7 +59,7 @@ const ProductDetail = () => {
               <span className='text-[20px] font-semibold'>Danh mục: <Link to={`/thuc-don/${product.prodType}`} className='hover:text-maincolor duration-300 text-[16px] font-[400]'>{product.prodType}</Link> </span>
            </div>
           <div className='mt-1'>
-              <span className='text-[20px] font-semibold'>Khuyến mãi: <b className='text-[16px] font-[400]'>{product.saleOff === true ? 'đang khuyến mãi' : 'không khuyến mãi'}</b> </span>
+              <span className='text-[20px] font-semibold'>Khuyến mãi: <b className='text-[16px] font-[400]'>{product.saleOff === 'khuyen-mai' ? 'đang khuyến mãi' : 'không khuyến mãi'}</b> </span>
            </div>
            <div className='mt-10'>
               <button onClick={()=>handleAddToCart(product)} type='button' className='py-2 px-5 bg-maincolor text-white font-semibold rounded-[10px] hover:brightness-90 duration-200'>
