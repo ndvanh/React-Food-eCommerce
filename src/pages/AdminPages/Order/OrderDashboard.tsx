@@ -7,6 +7,7 @@ import { FoodContext } from "../../../context/FoodContext/FoodContext"
 import { usePanigation } from "../../../hooks"
 import { convertDate } from "../../../utils/convertDate"
 import { formatVND } from "../../../utils/formatVND"
+import { CSVLink } from 'react-csv'
 
 const OrderDashboard = () => {
   const {setOrder} : any = useContext(FoodContext)
@@ -15,6 +16,7 @@ const OrderDashboard = () => {
   const {isOpen, onOpen, onClose } = useDisclosure()
   const finalRef = useRef(null)
   const [orderList,setOrderList] = useState<Order[]>([])
+  const [allOrder,setAllOrder] = useState<Order[]>([])
   const [orderId,setOrderId] = useState()
   useEffect(() =>{
     const getOrder = async () => {
@@ -22,6 +24,8 @@ const OrderDashboard = () => {
          const response = await paymentAPI.getPageOrder(pageNum)
          setOrderList(response.data)
          setPageSum(response.pageSum)
+         const allResponse = await paymentAPI.getAllOrder()
+         setAllOrder(allResponse)
       }
       catch(err){
         console.log('Không thể lấy danh sách đơn hàng',err)
@@ -64,26 +68,43 @@ const OrderDashboard = () => {
   const handleInputChange = (e : ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value)
   }
+  const headers = [
+    { label: "Mã", key: "_id" },
+    { label: "Tên người dùng", key: "userName" },
+    { label: "Số điện thoại", key: "phoneNumber" },
+    { label: "Địa chỉ", key: "userAddress" },
+    { label: "Phương thức TT", key: "paymentMethods" },
+    { label: "Danh sách SP", key: "productDetails" },
+    { label: "Tổng thanh toán", key: "totalPrice" },
+    { label: "Trạng thái TT", key: "status" },
+    { label: "Ngày mua", key: "createdAt" },
+    { label: "Ngày sửa đổi", key: "updatedAt" },
+  ]
   return (
     <section>
       <div className='flex justify-between items-center mb-7 md:block'>
         <span className='text-maincolor text-[16px]'>Ấn vào tên để xem chi tiết đơn hàng</span>
-        <div className='md:mt-5'>
-        <InputGroup>
-          <InputLeftElement
-            pointerEvents='none'
-            children={<SearchIcon color='#ff5e57' />}
-          />
-          <Input 
-            type='search' 
-            variant='outline' 
-            placeholder='Tìm đơn hàng...' 
-            className='cursor-pointer text-maintext' 
-            htmlSize={30} width='auto'
-            focusBorderColor='#ff5e57'
-            onChange={handleInputChange}
-            />
-          </InputGroup>
+        <div className='md:mt-5 flex xl:block'>
+          <div className='bg-[#1ba466] xl:w-[112px] text-white py-2 px-2 rounded-[5px] cursor-pointer hover:brightness-90 duration-200'>
+            <CSVLink data={allOrder} headers={headers} filename={'Đơn-hàng'}>Xuất Excel <i className="fa-solid fa-file-excel"></i></CSVLink >
+          </div>
+         <div className='ml-5 xl:ml-0 xl:mt-5'>
+          <InputGroup>
+              <InputLeftElement
+                pointerEvents='none'
+                children={<SearchIcon color='#ff5e57' />}
+              />
+              <Input 
+                type='search' 
+                variant='outline' 
+                placeholder='Tìm đơn hàng...' 
+                className='cursor-pointer text-maintext' 
+                htmlSize={30} width='auto'
+                focusBorderColor='#ff5e57'
+                onChange={handleInputChange}
+                />
+            </InputGroup>
+         </div>
         </div>
       </div>
       <section>      

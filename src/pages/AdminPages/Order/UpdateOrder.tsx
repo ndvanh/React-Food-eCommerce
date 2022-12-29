@@ -9,6 +9,7 @@ import { useBack } from "../../../hooks/index"
 const UpdateOrder = () => {
   const toast = useToast()
   const [checked,setChecked] = useState<string>()
+  const [status,setStatus] = useState<string>()
   const {order,setOrder} : any = useContext(FoodContext)
   const {register,handleSubmit,formState:{errors} } = useForm()
   const {backToPrev} = useBack()
@@ -20,6 +21,9 @@ const UpdateOrder = () => {
   const handleRadio = (e : any) => {
     setChecked(e)
   }
+  const handleStatus = (e : any) => {
+    setStatus(e)
+  }
   const onSubmit = async () => {
     try{
       const data = {
@@ -29,7 +33,7 @@ const UpdateOrder = () => {
         paymentMethods : checked!,
         productDetails : order.productDetails,
         totalPrice : order.totalPrice,
-        status : order.status
+        status : status || order.status 
       }
       await paymentAPI.updateOrder(data,order._id)
       toast({
@@ -100,17 +104,12 @@ const UpdateOrder = () => {
             className='p-1 focus:outline-none border-[1px] text-black w-[70%] md:w-full mt-1'/>
           {errors.userAddress?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập địa chỉ giao hàng</span>}
         </fieldset>
-        <fieldset className='py-4'>
+        <fieldset className='py-4 text-maintext'>
           <label htmlFor="status" className='text-maintext'>Trạng thái thanh toán:</label> <br/>
-          <input 
-          {...register('status',{required:true,})} 
-            onChange={handleUpdateChange} 
-            type='text' 
-            name="status" 
-            id='status'
-            value= {order?.status} 
-            className='p-1 focus:outline-none border-[1px] text-black w-[70%] md:w-full mt-1'/>
-          {errors.status?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập TTTT</span>}
+          <RadioGroup onChange={handleStatus} defaultValue={order?.status.toString()} mt='12px'>
+            <Radio value='true' colorScheme='orange'>Đã thanh toán</Radio>
+            <Radio value='false' className='ml-5' colorScheme='orange'>Chưa thanh toán</Radio>
+          </RadioGroup>
         </fieldset>
         <fieldset className='py-4'>
           <label htmlFor="productDetails" className='text-maintext'>Danh sách sản phẩm:</label> <br/>
@@ -137,7 +136,7 @@ const UpdateOrder = () => {
         </fieldset>
         <fieldset className='py-4 text-maintext'>
           <label htmlFor="paymentMethods" className='text-maintext'>Phương thức thanh toán:</label> <br/>
-          <RadioGroup onChange={handleRadio} defaultValue={order?.paymentMethods}>
+          <RadioGroup onChange={handleRadio} defaultValue={order?.paymentMethods} mt='12px'>
             <Radio value='tien-mat' colorScheme='orange'>Thanh toán tiền mặt</Radio>
             <Radio value='the' className='ml-5' colorScheme='orange'>Thanh toán bằng thẻ</Radio>
           </RadioGroup>

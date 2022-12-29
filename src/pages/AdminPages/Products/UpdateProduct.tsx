@@ -47,7 +47,7 @@ const UpdateProduct = () => {
       formData.append('prodPrice', prodItem.prodPrice)
       formData.append('prodDetail', prodItem.prodDetail)
       formData.append('quantity', prodItem.quantity)
-      formData.append('saleOff', checked!)
+      formData.append('saleOff', checked || prodItem.saleOff)
       await productAPI.updateProduct(formData,prodItem._id)
       toast({
         position: 'top',
@@ -101,7 +101,7 @@ const UpdateProduct = () => {
           onChange={handleUpdateChange} 
           name="prodType" 
           id='prodType' 
-          defaultValue='Chọn'
+          defaultValue='Chọn' 
           className='p-1 focus:outline-none border-[1px] text-black w-[70%] md:w-full mt-1'>
           <option hidden disabled>Chọn</option>
           {menu.map((item,index)=>(

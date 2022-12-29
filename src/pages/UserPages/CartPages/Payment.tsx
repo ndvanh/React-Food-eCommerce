@@ -141,7 +141,7 @@ const Payment = () => {
             </fieldset>
             <fieldset className='py-4 text-maintext'>
               <label htmlFor="saleOff">Phương thức thanh toán:</label> <br/>
-              <RadioGroup onChange={handleRadio} className='mt-3'>
+              <RadioGroup onChange={handleRadio} mt='12px'>
                 <Radio value='tien-mat' colorScheme='orange'>Thanh toán tiền mặt</Radio>
                 <Radio value='the' className='ml-5' colorScheme='orange'>Thanh toán bằng thẻ</Radio>
               </RadioGroup>

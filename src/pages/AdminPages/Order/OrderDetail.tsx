@@ -20,7 +20,7 @@ const OrderDetail = () => {
                 <li className='py-3'>Tên khách hàng: <b>{order?.userName}</b></li>
                 <li className='py-3'>Số điện thoại khách hàng: <b>{order?.phoneNumber}</b></li>
                 <li className='py-3'>Địa chỉ khách hàng: <b>{order?.userAddress}</b></li>
-                <li className='py-3'>Phương thức thanh toán: <b>{order?.paymentMethods}</b></li>
+                <li className='py-3'>Phương thức thanh toán: <b>{order?.paymentMethods === 'the' ? 'Thanh toán bằng thẻ' : 'Thanh toán bằng tiền mặt'}</b></li>
                 <li className='py-3'>Danh sách sản phẩm: <b>{order?.productDetails}</b></li>
                 <li className='py-3'>Tổng tiền đơn hàng: <b>{formatVND(order?.totalPrice)}</b></li>
                 <li className='py-3'>Trạng thái thanh toán: <b>{order?.status === false ? 'Chưa thanh toán' : 'Đã thanh toán'}</b></li>

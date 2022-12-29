@@ -1,6 +1,7 @@
 import { SearchIcon } from "@chakra-ui/icons"
 import { Button, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, useToast } from "@chakra-ui/react"
 import { useState,useEffect,useRef, useContext, ChangeEvent } from "react"
+import { CSVLink } from "react-csv"
 import { Link } from "react-router-dom"
 import productAPI, { ProdItem } from "../../../api/productAPI"
 import { FoodContext } from "../../../context/FoodContext/FoodContext"
@@ -14,6 +15,7 @@ const ProductDashboard = () => {
   const {isOpen, onOpen, onClose } = useDisclosure()
   const finalRef = useRef(null)
   const [productList,setProductList] = useState<ProdItem[]>([])
+  const [allProduct,setAllProduct] = useState<ProdItem[]>([])
   const [productId,setProductId] = useState()
   useEffect(() =>{
     const getProdItem = async () => {
@@ -21,6 +23,8 @@ const ProductDashboard = () => {
          const response = await productAPI.getPageItem(pageNum)
          setProductList(response.data)
          setPageSum(response.pageSum)
+         const allResponse = await productAPI.getProdItem()
+         setAllProduct(allResponse)
       }
       catch(err){
         console.log('Không thể lấy danh sách sản phẩm',err)
@@ -63,28 +67,45 @@ const ProductDashboard = () => {
   const handleInputChange = (e : ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value)
   }
+  const headers = [
+    { label: "Mã sp", key: "_id" },
+    { label: "Tên sp", key: "prodName" },
+    { label: "Loại sp", key: "prodType" },
+    { label: "Ảnh sp", key: "prodImg" },
+    { label: "Giá sp", key: "prodPrice" },
+    { label: "Chi tiết sp", key: "prodDetail" },
+    { label: "Số lượng", key: "quantity" },
+    { label: "Khuyến mãi", key: "saleOff" },
+    { label: "Ngày tạo", key: "createdAt" },
+    { label: "Ngày sửa đổi", key: "updatedAt" },
+  ]
   return (
     <section>
       <div className='flex justify-between items-center mb-7 md:block'>
         <div>
           <Link to='/admin/admin-sanpham/them' className='bg-maincolor text-white py-2 px-2 rounded-[5px] cursor-pointer hover:brightness-90 duration-200'>Thêm sản phẩm</Link>  
         </div>
-        <div className='md:mt-5'>
-        <InputGroup>
-          <InputLeftElement
-            pointerEvents='none'
-            children={<SearchIcon color='#ff5e57' />}
-          />
-          <Input 
-            type='search' 
-            variant='outline' 
-            placeholder='Tìm sản phẩm...' 
-            className='cursor-pointer text-maintext' 
-            htmlSize={30} width='auto'
-            focusBorderColor='#ff5e57'
-            onChange={handleInputChange}
+        <div className='md:mt-5 flex xl:block'>
+          <div className='bg-[#1ba466] xl:w-[112px] text-white py-2 px-2 rounded-[5px] cursor-pointer hover:brightness-90 duration-200'>
+            <CSVLink data={allProduct} headers={headers} filename={'Danh sách - sản phẩm'}>Xuất Excel <i className="fa-solid fa-file-excel"></i></CSVLink >
+          </div>
+          <div className='ml-5 xl:ml-0 xl:mt-5'>
+          <InputGroup>
+            <InputLeftElement
+              pointerEvents='none'
+              children={<SearchIcon color='#ff5e57' />}
             />
-          </InputGroup>
+            <Input 
+              type='search' 
+              variant='outline' 
+              placeholder='Tìm sản phẩm...' 
+              className='cursor-pointer text-maintext' 
+              htmlSize={30} width='auto'
+              focusBorderColor='#ff5e57'
+              onChange={handleInputChange}
+              />
+            </InputGroup>
+          </div>
         </div>
       </div>
       <section>      

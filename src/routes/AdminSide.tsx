@@ -12,7 +12,7 @@ export const AdminSide = () => {
   return (
     <div>
       <AdminNav/>
-     <div className="ml-[240px] p-5 md:ml-0">
+     <div className="ml-[240px] p-5 md:ml-0 md:px-5">
      <Routes>
       <Route path='/' element={<AdminDashBoard/>}/>
       <Route path='/admin-thucdon' element={<MenuDashboard/>}/>
