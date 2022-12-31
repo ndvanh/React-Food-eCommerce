@@ -50,7 +50,8 @@ const AdminDashBoard = () => {
      return priceSum
    },[orderList])
   const saleOffProdList = prodList.filter(item => item.saleOff === 'khuyen-mai')
-  const statisticOrder = orderList.filter(item => item.status === true).map(item => {return {name:item.userName,y:item.totalPrice}})
+  const statisticOrder = orderList.filter(item => item.status === true)
+  const paidOrder = statisticOrder.map(item => {return {name:item.userName,y:item.totalPrice}})
   const statisticPmMethod = [
   { 
     name:'Thanh toán thẻ',
@@ -71,7 +72,7 @@ const AdminDashBoard = () => {
   series: [{
     name: 'Tổng đơn',
     colorByPoint: true,
-    data: statisticOrder
+    data: paidOrder
   }]
 }
   const pmmethodOptions = {
@@ -93,7 +94,7 @@ const AdminDashBoard = () => {
           <span className='text-maincolor text-[25px] bg-footercolor w-full block py-3 pl-3 border-b-[1px] border-solid border-maincolor'>
             Tổng đơn hàng
           </span>
-          <span className='font-semibold text-[18px] block py-3 ml-3'>{orderList.length}</span>
+          <span className='font-semibold text-[18px] block py-3 ml-3'>{statisticOrder.length}</span>
         </div>
         <div className='shadow-md'>
           <span className='text-maincolor text-[25px] bg-footercolor w-full block py-3 pl-3 border-b-[1px] border-solid border-maincolor'>

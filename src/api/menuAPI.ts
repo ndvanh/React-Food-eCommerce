@@ -15,7 +15,7 @@ const menuAPI = {
    },
    // POST thêm menu
  addMenuItem(data:any) {
-    const url = 'http://localhost:8080/api/menu'
+    const url = `${process.env.REACT_APP_API_URL}/api/menu`
     return axios.post(url,data)
  },
   // PATCH cập nhật menu

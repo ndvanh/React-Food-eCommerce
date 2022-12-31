@@ -32,12 +32,12 @@ const newsAPI = {
  },
  // POST thêm tin tức
  addNews : (data:any) => {
-  const url = `http://localhost:8080/api/news`
+  const url = `${process.env.REACT_APP_API_URL}/api/news`
   return axios.post(url,data)
 },
 // PATCH cập nhật tin tức
 updateNews(data:any,id:string) {
-  const url = `http://localhost:8080/api/news/${id}`
+  const url = `${process.env.REACT_APP_API_URL}/api/news/${id}`
   return axios.patch(url,data)
 },
 // DELETE xóa tin 

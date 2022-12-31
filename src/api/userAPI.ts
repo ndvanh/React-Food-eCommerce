@@ -31,17 +31,17 @@ const userAPI = {
 },
  // POST thêm người dùng (đăng ký)
  addUser : (data:UserAcc) => {
-  const url = `http://localhost:8080/api/user`
+  const url = `${process.env.REACT_APP_API_URL}/api/user`
   return axios.post(url,data)
 },
  // POST đăng nhập
  loginUser : (data:LoginAcc) => {
-  const url = `http://localhost:8080/api/user/login`
+  const url = `${process.env.REACT_APP_API_URL}/api/user/login`
   return axios.post(url,data)
 },
 // PATCH cập nhật người dùng
  updateUser(data:UserAcc,id:string) {
-  const url = `http://localhost:8080/api/user/${id}`
+  const url = `${process.env.REACT_APP_API_URL}/api/user/${id}`
   return axios.patch(url,data)
 },
 // DELETE xóa người dùng 

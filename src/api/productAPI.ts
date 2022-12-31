@@ -48,12 +48,17 @@ const productAPI = {
 },
  // POST thêm sp
  addProduct : (data:any) => {
-  const url = `http://localhost:8080/api/product`
+  const url = `${process.env.REACT_APP_API_URL}/api/product`
   return axios.post(url,data)
 },
 // PATCH cập nhật sp
 updateProduct(data:any,id:string) {
-  const url = `http://localhost:8080/api/product/${id}`
+  const url = `${process.env.REACT_APP_API_URL}/api/product/${id}`
+  return axios.patch(url,data)
+},
+// PATCH cập nhật số lượng
+updateQuantity(data:CartItem[]) {
+  const url = `${process.env.REACT_APP_API_URL}/api/product/quantity`
   return axios.patch(url,data)
 },
 // DELETE xóa sp

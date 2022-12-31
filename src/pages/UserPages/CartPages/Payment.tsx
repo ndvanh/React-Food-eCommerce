@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useMemo, useState,  } from "react"
 import { useForm } from "react-hook-form"
-import { CartItem } from "../../../api/productAPI"
+import productAPI, { CartItem } from "../../../api/productAPI"
 import { FoodContext } from "../../../context/FoodContext/FoodContext"
 import { useBack } from "../../../hooks"
 import { formatVND } from "../../../utils/formatVND"
@@ -72,6 +72,7 @@ const Payment = () => {
           duration: 8000,
           isClosable: true,
         })
+      await productAPI.updateQuantity(cartList)  
       localStorage.removeItem('product_list')
       window.location.reload()  
    }

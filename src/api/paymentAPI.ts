@@ -35,12 +35,12 @@ const paymentAPI = {
 },
  // POST thêm đơn hàng
  addOrder : (data:any) => {
-  const url = `http://localhost:8080/api/order`
+  const url = `${process.env.REACT_APP_API_URL}/api/order`
   return axios.post(url,data)
 },
 // PATCH cập nhật đơn hàng
  updateOrder(data:any,id:string) {
-  const url = `http://localhost:8080/api/order/${id}`
+  const url = `${process.env.REACT_APP_API_URL}/api/order/${id}`
   return axios.patch(url,data)
 },
 // DELETE xóa đơn hàng 

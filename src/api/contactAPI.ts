@@ -26,12 +26,12 @@ const contactAPI = {
 },
  // POST thêm liên hệ
  addContact : (data:ContactItem) => {
-  const url = `http://localhost:8080/api/contact`
+  const url = `${process.env.REACT_APP_API_URL}/api/contact`
   return axios.post(url,data)
 },
 // PATCH cập nhật liên hệ
  updateContact(data:ContactItem,id:string) {
-  const url = `http://localhost:8080/api/contact/${id}`
+  const url = `${process.env.REACT_APP_API_URL}/api/contact/${id}`
   return axios.patch(url,data)
 },
 // DELETE xóa liên hệ 
