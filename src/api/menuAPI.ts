@@ -20,7 +20,7 @@ const menuAPI = {
  },
   // PATCH cập nhật menu
   updateMenuItem(data:any,id:string) {
-   const url = `http://localhost:8080/api/menu/${id}`
+   const url = `${process.env.REACT_APP_API_URL}/api/menu/${id}`
    return axios.patch(url,data)
 },
  // DELETE xóa menu
