@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react"
-import menuAPI, { MenuItem } from "../../../api/menuAPI"
+import menuAPI, { MenuItem, initMenuList } from "../../../api/menuAPI"
 import { Link } from "react-router-dom"
 import { Skeleton } from "@chakra-ui/react"
+import _ from "lodash"
 
 const HomeCategory = () => {
-  const [menu, setMenu] = useState<MenuItem[]>([])
+  const [menu, setMenu] = useState<MenuItem[]>(initMenuList)
   const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
     const getMenuItem = async () => {
       try {
         const response = await menuAPI.getMenuItem()
-        setMenu(response)
         setIsLoaded(true)
+        setMenu(response)
       } catch (err) {
         console.log("Ko the lay danh sach menu item", err)
       }
@@ -24,8 +25,8 @@ const HomeCategory = () => {
         Danh mục món ăn
       </h1>
       <div className="grid grid-cols-4 gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-        {menu?.map((item) => (
-          <Skeleton isLoaded={isLoaded} fadeDuration={2} key={item._id}>
+        {menu?.map((item, index) => (
+          <Skeleton isLoaded={isLoaded} fadeDuration={2} key={!_.isNil(item._id) ? item._id : index}>
             <Link to={`/thuc-don/${item.menuType}`} key={item._id}>
               <div className="border-[1px] rounded-[10px] shadow-md cursor-pointer">
                 <div className="relative pt-[100%] md:pt-[60%] overflow-hidden rounded-t-[10px]">

@@ -1,18 +1,24 @@
 import { useState,useEffect } from "react"
-import productAPI, { ProdItem } from "../../../api/productAPI"
+import productAPI, { ProdItem, initProdList } from "../../../api/productAPI"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Pagination } from "swiper"
 import ProductItem from "../Food/ProductItem"
+import { Skeleton } from "@chakra-ui/react"
+import _ from "lodash"
 
 const HomePromotion = () => {
-  const [proFood,setProFood] = useState<ProdItem[]>([])
+  const [proFood,setProFood] = useState<ProdItem[]>(initProdList)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [browserWidth, setBrowserWidth] = useState(window.innerWidth)
+  const [productRes, setProductRes] = useState(4)
   useEffect(() =>{
     const getPromoItem = async () => {
       try{
          const response = await productAPI.getProdItem()
          setProFood(response)
+         setIsLoaded(true)
       }
       catch(err){
         console.log('Ko the lay danh sach san pham khuyen mai',err)
@@ -20,8 +26,6 @@ const HomePromotion = () => {
     }
     getPromoItem()
   },[])
-  const [browserWidth, setBrowserWidth] = useState(window.innerWidth)
-  const [productRes, setProductRes] = useState(4)
   useEffect(() => {
     const handleResize = () =>{
       setBrowserWidth(window.innerWidth)
@@ -45,13 +49,15 @@ const HomePromotion = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-      {proFood?.filter(item=>item.saleOff === 'khuyen-mai').map((item)=>(
-        <SwiperSlide key={item._id}>
-          <ProductItem product={item} />
-        </SwiperSlide>
-      ))}
-       </Swiper>
-      </section> 
+        {proFood?.filter(item=>item.saleOff === 'khuyen-mai').map((item, index)=>(
+          <SwiperSlide key={!_.isNil(item._id) ? item._id : index}>
+            <Skeleton isLoaded={isLoaded} fadeDuration={2}>
+              <ProductItem product={item} />
+            </Skeleton>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section> 
   )
 }
 export default HomePromotion

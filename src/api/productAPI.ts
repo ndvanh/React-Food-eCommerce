@@ -1,7 +1,7 @@
 import axios from "axios"
 import axiosClient from "./AxiosClient"
 
-export interface ProdItem{
+export interface ProdItem {
     _id: null,
     prodName: string,
     prodType : string,
@@ -19,6 +19,19 @@ export interface ProdRes{
   pageSum:number,
   data : ProdItem[]
   }
+
+export const initProdItem = {
+  _id: null,
+  prodName: '',
+  prodType : '',
+  prodImg : '',
+  prodPrice : 1,
+  prodDetail : '',
+  quantity : 1,
+  saleOff:'khuyen-mai',
+  createdAt:'',
+}
+export const initProdList: ProdItem[] = Array.from({ length: 4 }, () => ({ ...initProdItem }))
 // type ContextType = { typeMenu: string }
 const productAPI = {
   // GET lấy tất cả sp

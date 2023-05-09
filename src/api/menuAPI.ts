@@ -7,6 +7,9 @@ export interface MenuItem {
     imgMenu : any,
 }
 
+export const initMenuItem = { _id: null, menuType: '', imgMenu : '',}
+export const initMenuList: MenuItem[] = Array.from({ length: 4 }, () => ({ ...initMenuItem }))
+
 const menuAPI = {
   // GET lấy danh sách menu
  getMenuItem() : Promise<MenuItem[]>{

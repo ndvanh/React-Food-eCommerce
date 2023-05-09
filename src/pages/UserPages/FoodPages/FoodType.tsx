@@ -1,20 +1,23 @@
 import { useState,useEffect} from "react"
 import { useParams } from "react-router-dom"
-import productAPI, { ProdItem } from "../../../api/productAPI"
+import productAPI, { ProdItem, initProdList } from "../../../api/productAPI"
 import { ProductCard } from "../../../components/UserComponents/Food"
 import { Select } from "@chakra-ui/react"
 import { usePanigation } from "../../../hooks/index"
 
 const FoodType = () => {
-  const {food_type} = useParams()
+  const [productByType,setProductByType] = useState<ProdItem[]>(initProdList)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [selected, setSelected] = useState()
   const {pageNum,pageSum,changePage,setPageSum} = usePanigation()
-  const [productByType,setProductByType] = useState<ProdItem[]>([])
-  useEffect(() =>{
+  const {food_type} = useParams()
+  useEffect(() => {
     const getFoodType = async () => {
       try{
          const response = await productAPI.getPageByType(food_type,pageNum)
          setProductByType(response.data)
          setPageSum(response.pageSum)
+         setIsLoaded(true)
       }
       catch(err){
         console.log('Không thể lấy danh sách sản phẩm',err)
@@ -22,7 +25,6 @@ const FoodType = () => {
     }
     getFoodType()
   },[food_type, pageNum, setPageSum])
-  const [selected, setSelected] = useState()
   const handleChange = (e: any) => {
     if(e.target.value === 'prices-up'){
       const pricesGoUp = productByType.sort((a,b)=>a.prodPrice - b.prodPrice)
@@ -51,7 +53,7 @@ return (
       </Select>
     </div>
     <div className='grid grid-cols-4 gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
-      <ProductCard productList={productByType}/>
+      <ProductCard productList={productByType} isLoaded={isLoaded}/>
     </div> 
     <div className='mt-10 flex justify-center'>    
      <nav className='text-[16px] cursor-pointer'>

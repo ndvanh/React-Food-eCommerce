@@ -14,6 +14,18 @@ export interface NewsRes{
   pageSum:number,
   data : NewsItem[]
   }
+
+export const initNewsItem = {
+  _id: null,
+  newsTitle : '',
+  imgNews : '',
+  newsContent : '',
+  editor: '',
+  createdAt:'',
+  updatedAt:''
+}
+export const initNewsList: NewsItem[] = Array.from({ length: 3 }, () => ({ ...initNewsItem }))
+
 const newsAPI = {
   // GET lấy tất cả bài tin
  getAllNews : () : Promise<NewsItem[]>  => {

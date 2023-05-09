@@ -1,15 +1,17 @@
 import { Select } from "@chakra-ui/react"
 import { useState,useEffect } from "react"
-import productAPI, { ProdItem } from "../../api/productAPI"
+import productAPI, { ProdItem, initProdList } from "../../api/productAPI"
 import { ProductCard } from "../../components/UserComponents/Food"
 
 const Promotion = () => {
-  const [proFood,setProFood] = useState<ProdItem[]>([])
+  const [proFood,setProFood] = useState<ProdItem[]>(initProdList)
+  const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() =>{
     const getPromoItem = async () => {
       try{
          const response = await productAPI.getProdItem()
          setProFood(response)
+         setIsLoaded(true)
       }
       catch(err){
         console.log('Ko the lay danh sach san pham khuyen mai',err)
@@ -35,7 +37,7 @@ const Promotion = () => {
     <section className='max-w-[1200px] m-auto lg:px-5'>
       <h1 className='text-[40px] md:text-[30px] sm:text-[25px] py-5 overflow-hidden relative font-semibold text-maincolor after:h-[2px] after:w-full after:bg-text2 after:absolute after:ml-[30px] after:top-[58%]'>Khuyến mãi cực lớn</h1>
       <div className='mb-8 ml-2 inline-block w-[200px]'>
-        <Select placeholder='Sắp xếp theo' 
+        <Select placeholder='Sắp xếp theo'
         borderColor='#ff5e57'
         focusBorderColor='#ff5e57'
         color='#576574'
@@ -48,7 +50,7 @@ const Promotion = () => {
         </Select>
       </div>
       <div className='grid grid-cols-4 gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
-        <ProductCard productList={filProdPromotion}/>
+        <ProductCard productList={filProdPromotion} isLoaded={isLoaded}/>
        </div>   
       </section> 
   )
