@@ -5,12 +5,13 @@ import { CSVLink } from "react-csv"
 import { Link } from "react-router-dom"
 import userAPI, { UserAcc } from "../../../api/userAPI"
 import { LoginContext } from "../../../context/LoginContext/LoginContext"
-import { usePanigation } from "../../../hooks"
+import { usePagination } from "../../../hooks"
 import { convertDate } from "../../../utils/convertDate"
+import { Pagination } from "../../../components/Common"
 
 const UserDashboard = () => {
   const {setUserInfo} : any = useContext(LoginContext)
-  const {pageNum,pageSum,changePage,setPageSum} = usePanigation()
+  const {pageNum,pageSum,changePage,setPageSum} = usePagination()
   const toast = useToast()
   const {isOpen, onOpen, onClose } = useDisclosure()
   const finalRef = useRef(null)
@@ -156,28 +157,7 @@ const UserDashboard = () => {
               </table>
           </div>
       </section>
-      <div className='mt-10 flex justify-center'>    
-        <nav className='text-[16px] cursor-pointer'>
-        <ul className="inline-flex items-center -space-x-px">
-          <li onClick={()=>changePage(pageNum-1)} className='px-1'>
-            <span className="block px-3 py-2 ml-0 text-maintext hover:text-maincolor duration-200" style={pageNum === 1 ? {cursor:'not-allowed'} : {}}>
-          <i className="fa-solid fa-chevron-left"></i>
-            </span>
-          </li>
-          {[...Array(pageSum)].map((item,index)=>(
-            <li onClick={()=>changePage(index+1)} key={index} className='px-1'>
-              <span className="px-3 py-1 text-maintext hover:text-maincolor duration-200" 
-               style={pageNum === index +1 ? {color: 'white',backgroundColor:'#ff5e57',borderRadius:'5px'} : {}}>{index+1}</span>
-              </li>
-            ))}
-          <li onClick={()=>changePage(pageNum+1)} className='px-1'>
-            <span className="block px-3 py-2 text-maintext hover:text-maincolor duration-200 " style={pageNum === pageSum  ? {cursor:'not-allowed'} : {}}>
-            <i className="fa-solid fa-chevron-right"></i>
-            </span>
-          </li>
-        </ul>
-        </nav>
-      </div>
+      <Pagination pageSum={pageSum} pageNum={pageNum} changePage={changePage}/>
       <div>
       <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

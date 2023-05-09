@@ -2,12 +2,13 @@ import { Select } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import productAPI, { ProdItem, initProdList } from "../../../api/productAPI"
 import { ProductCard } from "../../../components/UserComponents/Food"
-import { usePanigation } from "../../../hooks/index"
+import { usePagination } from "../../../hooks/index"
+import { Pagination } from "../../../components/Common"
 
 const FoodMenuDefault = () => {
   const [productList, setProductList] = useState<ProdItem[]>(initProdList)
   const [isLoaded, setIsLoaded] = useState(false)
-  const { pageNum, pageSum, changePage, setPageSum } = usePanigation()
+  const { pageNum, pageSum, setPageSum, changePage} = usePagination()
   useEffect(() => {
     const getMenuItem = async () => {
       try {
@@ -58,50 +59,7 @@ const FoodMenuDefault = () => {
       <div className="grid grid-cols-4 gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
         <ProductCard productList={productList} isLoaded={isLoaded} />
       </div>
-      <div className="mt-10 flex justify-center">
-        <nav className="text-[16px] cursor-pointer">
-          <ul className="inline-flex items-center -space-x-px">
-            <li onClick={() => changePage(pageNum - 1)} className="px-1">
-              <span
-                className="block px-3 py-2 ml-0 text-maintext hover:text-maincolor duration-200"
-                style={pageNum === 1 ? { cursor: "not-allowed" } : {}}
-              >
-                <i className="fa-solid fa-chevron-left"></i>
-              </span>
-            </li>
-            {[...Array(pageSum)].map((item, index) => (
-              <li
-                onClick={() => changePage(index + 1)}
-                key={index}
-                className="px-1"
-              >
-                <span
-                  className="px-3 py-1 text-maintext hover:text-maincolor duration-200"
-                  style={
-                    pageNum === index + 1
-                      ? {
-                          color: "white",
-                          backgroundColor: "#ff5e57",
-                          borderRadius: "5px",
-                        }
-                      : {}
-                  }
-                >
-                  {index + 1}
-                </span>
-              </li>
-            ))}
-            <li onClick={() => changePage(pageNum + 1)} className="px-1">
-              <span
-                className="block px-3 py-2 text-maintext hover:text-maincolor duration-200 "
-                style={pageNum === pageSum ? { cursor: "not-allowed" } : {}}
-              >
-                <i className="fa-solid fa-chevron-right"></i>
-              </span>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <Pagination pageSum={pageSum} pageNum={pageNum} changePage={changePage}/>
     </section>
   )
 }

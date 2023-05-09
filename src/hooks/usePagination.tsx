@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const usePanigation = () => {
+const usePagination = () => {
     const [pageNum,setPageNum] = useState(1) // số page req ?page=
     const [pageSum,setPageSum] = useState(0) // tổng số page
     const changePage = (num : number) =>{
@@ -16,4 +16,4 @@ const usePanigation = () => {
     }
     return {pageNum,pageSum,changePage,setPageSum}
 }
-export default usePanigation
+export default usePagination

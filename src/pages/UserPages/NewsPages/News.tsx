@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react"
 import { Link} from "react-router-dom"
 import newsAPI, { NewsItem, initNewsList } from "../../../api/newsAPI"
-import { usePanigation } from "../../../hooks"
+import { usePagination } from "../../../hooks"
 import { convertDate } from "../../../utils/convertDate"
 import { Skeleton } from "@chakra-ui/react"
 import _ from "lodash"
+import { Pagination } from "../../../components/Common"
 
 const News = () => {
   const [news,setNews] = useState<NewsItem[]>(initNewsList)
   const [isLoaded, setIsLoaded] = useState(false)
-  const {pageNum,pageSum,changePage,setPageSum} = usePanigation()
-  useEffect(() =>{
+  const {pageNum, pageSum, setPageSum, changePage} = usePagination()
+  useEffect(() => {
     const getMenuItem = async () => {
       try{
          const response = await newsAPI.getPageNews(pageNum)
@@ -47,28 +48,7 @@ const News = () => {
           </Skeleton>
         ))}
       </div>
-      <div className='mt-10 flex justify-center'>    
-     <nav className='text-[16px] cursor-pointer'>
-      <ul className="inline-flex items-center -space-x-px">
-        <li onClick={()=>changePage(pageNum-1)} className='px-1'>
-          <span className="block px-3 py-2 ml-0 text-maintext hover:text-maincolor duration-200" style={pageNum === 1 ? {cursor:'not-allowed'} : {}}>
-          <i className="fa-solid fa-chevron-left"></i>
-          </span>
-        </li>
-        {[...Array(pageSum)].map((item,index)=>(
-          <li onClick={()=>changePage(index+1)} key={index} className='px-1'>
-          <span className="px-3 py-1 text-maintext hover:text-maincolor duration-200" 
-          style={pageNum === index +1 ? {color: 'white',backgroundColor:'#ff5e57',borderRadius:'5px'} : {}}>{index+1}</span>
-        </li>
-        ))}
-        <li onClick={()=>changePage(pageNum+1)} className='px-1'>
-          <span className="block px-3 py-2 text-maintext hover:text-maincolor duration-200 " style={pageNum === pageSum  ? {cursor:'not-allowed'} : {}}>
-          <i className="fa-solid fa-chevron-right"></i>
-          </span>
-        </li>
-      </ul>
-    </nav>
-   </div>
+      <Pagination pageSum={pageSum} pageNum={pageNum} changePage={changePage}/>
     </section>
   )
 }
