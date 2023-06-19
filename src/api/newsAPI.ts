@@ -27,7 +27,7 @@ export const initNewsItem = {
 export const initNewsList: NewsItem[] = Array.from({ length: 3 }, () => ({ ...initNewsItem }))
 
 const newsAPI = {
-  // GET lấy tất cả bài tin
+  // GET lấy tất cả tin tức
  getAllNews : () : Promise<NewsItem[]>  => {
       const url = '/api/news'
       return axiosClient.get(url)
