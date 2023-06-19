@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { LoginContext } from "../../../context/LoginContext/LoginContext"
+import { auth } from "../../../service/firebase"
 
 const UserLogin = () => {
   const {userAcc} : any = useContext(LoginContext)
@@ -9,18 +10,19 @@ const UserLogin = () => {
   const logOut = () => {
     localStorage.removeItem('user_account')
     localStorage.removeItem('product_list')
+    auth.signOut()
     window.location.reload()
   }
   return (
     <>
-    {userAcc ? 
+    {userAcc ?
         <div className='relative' onClick={toggleDisplay}>
           <img 
             title= {userAcc?.userName}
             className='cursor-pointer h-[35px] w-[35px] lg:h-[24px] lg:w-[24px] rounded-full'
             src='https://static.vecteezy.com/system/resources/previews/005/559/915/original/cute-penguin-waving-hand-cartoon-icon-illustration-animal-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg' 
             alt={userAcc?.userName}/>
-          {display && 
+          {display &&
           <div className='bg-white w-[100px] 2lg:w-[80px] absolute py-3 px-2 shadow-md border-t-[1px] border-t-footercolor top-[120%]'>
             <ul className='text-maintext'>
               <li className='hover:underline 2lg:text-[12px]'>
@@ -30,8 +32,8 @@ const UserLogin = () => {
                   Đăng xuất 
               </li>
             </ul>
-          </div>}  
-        </div> : 
+          </div>}
+        </div> :
         <Link to='/dang-nhap'><i className="fa-solid fa-circle-user text-maincolor text-[25px]"></i></Link>
     }
     </>

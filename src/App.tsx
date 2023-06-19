@@ -6,7 +6,7 @@ import FoodProvider from './context/FoodContext/FoodProvider'
 import LoginProvider from './context/LoginContext/LoginProvider'
 import { AdminLoginForm, AdminProtectedroute } from './pages/AdminPages/AdminLogin'
 
-function App() {  
+function App() {
   return (
     <LoginProvider>
       <FoodProvider>

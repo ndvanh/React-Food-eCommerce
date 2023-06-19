@@ -1,9 +1,10 @@
-import {Flex,Box,FormControl,FormLabel,Input,Stack,Button,Heading,useColorModeValue, useToast,} from '@chakra-ui/react'
+import {Flex,Box,FormControl,FormLabel,Input,Stack,Button,Heading,useColorModeValue, useToast, Text,} from '@chakra-ui/react'
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import userAPI, { LoginAcc } from '../../../api/userAPI'
 import { LoginContext } from '../../../context/LoginContext/LoginContext'
+import { signInWithGoogle } from '../../../service/firebase'
 
 const LoginPage = () => {
   const {userAcc,setUserAcc} : any = useContext(LoginContext)
@@ -22,10 +23,10 @@ const LoginPage = () => {
   }
   const onSubmit = async () => {
     try{
-     const resAccount =  await userAPI.loginUser(account)
+     const resAccount = await userAPI.loginUser(account)
      if (resAccount) {
       const loginAcc = {
-        userName:resAccount.data.userName, 
+        userName:resAccount.data.userName,
         phoneNumber:resAccount.data.phoneNumber,
         userMail:resAccount.data.userMail
       }
@@ -39,7 +40,7 @@ const LoginPage = () => {
         status: 'success',
         duration: 5000,
         isClosable: true,
-      })
+     })
    }
    catch(err : any){
     if(err.response.status === 401) {
@@ -85,14 +86,14 @@ const LoginPage = () => {
               <FormControl id="email">
                 <FormLabel>Địa chỉ email</FormLabel>
                 <Input {...register('userMail',{required:true,pattern: emailRegex,})} onChange={handleInputData} type="text" focusBorderColor='#ff5e57' />
-                {errors.userMail?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập email của bạn</span>}
-                {errors.userMail?.type === 'pattern' && <span className="text-[#ee5253] mt-1 block">Email không đúng định dạng</span>}
+                {errors.userMail?.type === 'required' && <span className="text-maincolor mt-1 block">Hãy nhập email của bạn</span>}
+                {errors.userMail?.type === 'pattern' && <span className="text-maincolor mt-1 block">Email không đúng định dạng</span>}
               </FormControl>
               <FormControl id="password" mt={5}>
                 <FormLabel>Mật khẩu</FormLabel>
                 <Input {...register('userPassword',{required:true,minLength:6})} onChange={handleInputData} type="password" focusBorderColor='#ff5e57' />
-                {errors.userPassword?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập mật khẩu</span>}
-                {errors.userPassword?.type === 'minLength' && <span className="text-[#ee5253] mt-1 block">Mật khẩu phải lớn hơn 6 kí tự</span>}
+                {errors.userPassword?.type === 'required' && <span className="text-maincolor mt-1 block">Hãy nhập mật khẩu</span>}
+                {errors.userPassword?.type === 'minLength' && <span className="text-maincolor mt-1 block">Mật khẩu phải lớn hơn 6 kí tự</span>}
               </FormControl>
               <Stack spacing={4}>
                 <Stack
@@ -104,6 +105,12 @@ const LoginPage = () => {
                 <Button type='submit' bg={'#ff5e57'} color={'white'} _hover={{bg: '',}}>Đăng nhập</Button>
               </Stack>
             </form>
+          </Stack>
+          <Text fontSize='sm' align='center' m={2} color='#576574'>hoặc</Text>
+          <Stack>
+            <Button type='button' colorScheme='twitter' _hover={{bg: '',}} onClick={signInWithGoogle}>
+              Đăng nhập với Google <i className="fa-brands fa-google text-[20px] ml-1"></i>
+            </Button>
           </Stack>
         </Box>
       </Stack>}

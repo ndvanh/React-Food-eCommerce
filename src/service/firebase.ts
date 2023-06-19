@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth' 
+import { getAnalytics } from "firebase/analytics"
+import 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,5 +19,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const app = firebase.initializeApp(firebaseConfig)
+const analytics = getAnalytics(app)
+
+export const auth = firebase.auth()
+const provider = new firebase.auth.GoogleAuthProvider()
+//Đặt OAuth custom parameters để chuyển vào một yêu cầu Google OAuth cho các hoạt động đăng nhập bật lên và chuyển hướng. prompt: có thể dùng nhiều account
+provider.setCustomParameters({ prompt: 'select_account' })
+
+// popup login google
+export const signInWithGoogle = () => auth.signInWithPopup(provider)
+export default firebase

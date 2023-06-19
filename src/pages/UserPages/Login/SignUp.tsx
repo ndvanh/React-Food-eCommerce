@@ -8,7 +8,7 @@ const SignUp = () => {
   const { register,handleSubmit,formState:{errors} } = useForm()
   const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
   const toast = useToast()
-  const initialState: UserAcc = {
+  const initialState : UserAcc = { 
     _id: null,
     userName : '',
     phoneNumber : 1,

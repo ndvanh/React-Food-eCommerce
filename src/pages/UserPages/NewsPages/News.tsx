@@ -12,9 +12,11 @@ const News = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const {pageNum, pageSum, setPageSum, changePage} = usePagination()
   useEffect(() => {
+    const abortController = new AbortController()
+    const { signal } = abortController
     const getMenuItem = async () => {
       try{
-         const response = await newsAPI.getPageNews(pageNum)
+         const response = await newsAPI.getPageNews(pageNum,signal)
          setNews(response.data)
          setPageSum(response.pageSum)
          setIsLoaded(true)
@@ -24,6 +26,9 @@ const News = () => {
       }
     }
     getMenuItem()
+    return () => {
+      abortController.abort()
+    }
   },[pageNum, setPageSum])
   return (
     <section className='max-w-[1200px] m-auto lg:px-5'>

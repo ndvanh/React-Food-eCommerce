@@ -17,9 +17,11 @@ const NewsDashboard = () => {
   const [newsList,setNewsList] = useState<NewsItem[]>([])
   const [newsId,setNewsId] = useState()
   useEffect(() =>{
+    const abortController = new AbortController()
+    const { signal } = abortController
     const getNewsItem = async () => {
       try{
-         const response = await newsAPI.getPageNews(pageNum)
+         const response = await newsAPI.getPageNews(pageNum,signal)
          setNewsList(response.data)
          setPageSum(response.pageSum)
       }
@@ -28,6 +30,9 @@ const NewsDashboard = () => {
       }
     }
     getNewsItem()
+    return () => {
+      abortController.abort()
+    }
   },[pageNum, setPageSum])
   const getNewsId = (newsId : any) => {
     setNewsId(newsId)

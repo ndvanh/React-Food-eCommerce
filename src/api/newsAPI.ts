@@ -33,9 +33,9 @@ const newsAPI = {
       return axiosClient.get(url)
   },
   // GET lấy tin tức với phân trang
- getPageNews : (num : number) : Promise<NewsRes>  => {
+ getPageNews : (num : number, signal: AbortSignal) : Promise<NewsRes>  => {
   const url = `/api/news?page=${num}`
-  return axiosClient.get(url)
+  return axiosClient.get(url, {signal: signal})
 },
  // GET lấy tin tức theo title 
  getNewsByTitle : (data:string | undefined) : Promise<NewsItem>  => {
