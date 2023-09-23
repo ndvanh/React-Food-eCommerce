@@ -38,8 +38,8 @@ const Promotion = () => {
       <h1 className='text-[40px] md:text-[30px] sm:text-[25px] py-5 overflow-hidden relative font-semibold text-maincolor after:h-[2px] after:w-full after:bg-text2 after:absolute after:ml-[30px] after:top-[58%]'>Khuyến mãi cực lớn</h1>
       <div className='mb-8 ml-2 inline-block w-[200px]'>
         <Select placeholder='Sắp xếp theo'
-        borderColor='#ff5e57'
-        focusBorderColor='#ff5e57'
+        borderColor='#fa983a'
+        focusBorderColor='#fa983a'
         color='#576574'
         className='cursor-pointer'
         value = {selected}

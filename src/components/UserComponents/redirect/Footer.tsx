@@ -50,8 +50,8 @@ const Footer = () => {
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           <Stack align={'flex-start'}>
             <ListHeader>Về chúng tôi</ListHeader>
-            <Link to={'#'}>Cloud Food</Link>
-            <Link to={'#'}>cloudfood7@gmail.com</Link>
+            <Link to={'#'}>YumYum</Link>
+            <Link to={'#'}>yumyum9@gmail.com</Link>
             <Link to={'#'}>235 HQV, Bắc Từ Liêm, Hà Nội</Link>
             <Link to={'#'}>0912345678</Link>
           </Stack>
@@ -92,7 +92,7 @@ const Footer = () => {
           spacing={4}
           justify={{ md: 'space-between' }}
           align={{ md: 'center' }}>
-          <Text>© 2022 Bản quyền thuộc về Cloud Food</Text>
+          <Text>© 2023 Bản quyền thuộc về Yum Yum</Text>
           <Stack direction={'row'} spacing={6}>
             <SocialButton label={'Facebook'} href={'#'}>
             <i className="fa-brands fa-facebook text-[20px] text-white cursor-pointer"></i>

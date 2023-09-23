@@ -5,7 +5,7 @@ import { UserLogin } from "../Login"
 
 const TabLetMobileNav = () => {
   const linkActive = ({isActive}:any) => ({
-        color : isActive ? '#ff5e57' : ''
+        color : isActive ? '#fa983a' : ''
   })
   const {cartList} : any = useContext(FoodContext)
   const [displayNav,setDisplayNav] = useState<boolean>(false)
@@ -17,7 +17,7 @@ const TabLetMobileNav = () => {
           <div onClick={toggleDisplayNav}>
             <i className="fa-solid fa-bars text-maincolor text-[25px]"></i>
           </div>
-          <div><Link to='/'><span className='font-bold text-[25px] ml-10 text-maincolor'>Cloud Food</span></Link></div>
+          <div><Link to='/'><span className='font-bold text-[25px] ml-10 text-maincolor'>Yum Yum</span></Link></div>
           <div className='relative flex'>
             <div className='mr-2'><UserLogin/></div>
             <div>

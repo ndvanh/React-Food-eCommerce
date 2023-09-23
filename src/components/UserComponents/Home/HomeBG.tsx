@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 const HomeBG = () => {
   return (
     <section className="h-[calc(100vh-68px)] flex items-center justify-start bg-black relative lg:px-5">
-      <div className="absolute top-0 left-0 w-full h-full bg-fixed bg-[url('https://images.deliveryhero.io/image/fd-my/LH/ubls-hero.jpg')] bg-no-repeat bg-cover bg-center opacity-40" />
+      <div className="absolute top-0 left-0 w-full h-full bg-fixed bg-[url('https://www.mashed.com/img/gallery/the-best-new-fast-food-menu-items-weve-tried-in-2023-so-far/l-intro-1682446897.jpg')] bg-no-repeat bg-cover bg-center opacity-40" />
       <div className=' relative max-w-[1200px] w-full m-auto md:px-5'>
         <div className='text-[60px] font-bold text-maincolor'>
-            <h1 className='text-[60px] uppercase md:text-[35px]'>Thức ăn ngay</h1>
-            <h1 className='text-[60px] md:text-[35px] uppercase'>Cho cơn đói tức thì</h1>
+            <h1 className='text-[60px] uppercase md:text-[35px]'>Ăn ngay thôi nào</h1>
+            <h1 className='text-[60px] md:text-[35px] uppercase'>Còn đợi chờ chi!</h1>
             <p className='text-[20px] text-white mt-5'>Menu đa dạng và phong phú, có rất nhiều sự lựa chọn cho bạn, gia đình và bạn bè.</p>
         </div>
         <div className='mt-10 text-white'>

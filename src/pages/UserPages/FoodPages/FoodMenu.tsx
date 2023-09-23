@@ -6,7 +6,7 @@ import _ from "lodash"
 
 const FoodMenu = () => {
   const linkActive = ({isActive}:any) => ({
-    color : isActive ? '#ff5e57' : '',
+    color : isActive ? '#fa983a' : '',
     fontWeight : isActive ? '600' : ''
   })
   const [menu,setMenu] = useState<MenuItem[]>(initMenuList)

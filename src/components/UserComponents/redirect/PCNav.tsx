@@ -6,7 +6,7 @@ import { UserLogin } from '../Login'
 
 const PCNav = () => {
   const linkActive = ({isActive}:any) => ({
-        color : isActive ? '#ff5e57' : ''
+        color : isActive ? '#fa983a' : ''
   })
   const {cartList} : any = useContext(FoodContext)
   return (
@@ -15,7 +15,7 @@ const PCNav = () => {
         <NavLink to='/'>
           <div className='flex items-center cursor-pointer mb-1'>
             <img alt="icon" className='h-[40px] w-[40px]' src={require('../../../assets/imgs/burger.png')}/>
-            <span className='font-bold text-[25px] ml-2 text-maincolor'>Cloud Food</span> 
+            <span className='font-bold text-[25px] ml-2 text-maincolor'>Yum Yum</span> 
           </div>
         </NavLink>
         <div className="flex justify-between flex-1 ml-7 items-center">

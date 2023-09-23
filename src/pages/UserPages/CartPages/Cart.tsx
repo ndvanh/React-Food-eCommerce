@@ -62,7 +62,7 @@ const Cart = () => {
               <span className='text-[20px] flex-1 ml-[60px] md:ml-0 md:py-3'>Tên: {item.prodName}</span>
               <span className='text-[18px] ml-10 md:ml-0 flex-1 md:pb-3'>Giá: {formatVND(item.prodPrice)}</span>
               <div onClick={()=>handleChangeQuantity(item)}>
-              <NumberInput value={item.qty} onChange={handleQuantity} defaultValue={1} size='md' maxW={32} min={1} max={item.quantity} focusBorderColor='#ff5e57'>
+              <NumberInput value={item.qty} onChange={handleQuantity} defaultValue={1} size='md' maxW={32} min={1} max={item.quantity} focusBorderColor='#fa983a'>
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper/>

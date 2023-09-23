@@ -57,7 +57,7 @@ const Contact = () => {
                 <Box>
                   <Heading>Liên hệ với chúng tôi</Heading>
                   <Text mt={{ sm: 3, md: 3, lg: 5 }} color="white">
-                    Cloud Food - Contact us
+                    Yum Yum - Contact us
                   </Text>
                   <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
                     <VStack pl={0} spacing={3} alignItems="flex-start">
@@ -79,7 +79,7 @@ const Contact = () => {
                         _hover={{ border: '2px solid white' }}
                         leftIcon={<EmailIcon color="white"/>}
                         >
-                        cloudfood7@gmail.com
+                        yumyum9@gmail.com
                       </Button>
                       <Button
                         size="md"
@@ -113,14 +113,14 @@ const Contact = () => {
                       <FormControl id="name">
                         <FormLabel className='text-maintext'>Tên của bạn</FormLabel>
                         <InputGroup borderColor="#E0E1E7">                         
-                          <Input {...register('nameCt',{required:true,})} onChange={handleAddChange} type="text" size="md" focusBorderColor='#ff5e57'/>
+                          <Input {...register('nameCt',{required:true,})} onChange={handleAddChange} type="text" size="md" focusBorderColor='#fa983a'/>
                         </InputGroup>
                           {errors.nameCt?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập tên của bạn</span>}
                       </FormControl>
                       <FormControl id="name">
                         <FormLabel className='text-maintext'>Email</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
-                          <Input {...register('emailCt',{required:true,pattern: emailRegex,})} onChange={handleAddChange} type="text" size="md" focusBorderColor='#ff5e57'/>
+                          <Input {...register('emailCt',{required:true,pattern: emailRegex,})} onChange={handleAddChange} type="text" size="md" focusBorderColor='#fa983a'/>
                         </InputGroup>
                           {errors.emailCt?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập email của bạn</span>}
                           {errors.emailCt?.type === 'pattern' && <span className="text-[#ee5253] mt-1 block">Email không đúng định dạng</span>}
@@ -135,12 +135,12 @@ const Contact = () => {
                             borderRadius: 'gray.300',
                           }}
                           placeholder="nội dung"
-                          focusBorderColor='#ff5e57'
+                          focusBorderColor='#fa983a'
                         />
                         {errors.contentCt?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy để lại lời nhắn</span>}
                       </FormControl>
                       <FormControl id="name">
-                        <Button variant="solid" className='w-full' bg="#ff5e57" color="white" type='submit' _hover={{}}>Gửi đi</Button>
+                        <Button variant="solid" className='w-full' bg="#fa983a" color="white" type='submit' _hover={{}}>Gửi đi</Button>
                       </FormControl>
                     </VStack>
                   </Box>

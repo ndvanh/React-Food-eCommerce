@@ -36,7 +36,7 @@ const ProductDetail = () => {
     <section className='mt-8 max-w-[1200px] m-auto lg:px-5'>
         <div className='mb-6 text-maintext flex justify-between'>
           <span className='text-[18px] font-semibold'>
-            <Link className='hover:text-maincolor duration-300' to='/'>Cloud Food</Link> &gt; 
+            <Link className='hover:text-maincolor duration-300' to='/'>Yum Yum</Link> &gt; 
             <Link className='hover:text-maincolor duration-300' to={`/thuc-don/${product.prodType}`}>{product.prodType}</Link> &gt; 
             {food_name} 
           </span>

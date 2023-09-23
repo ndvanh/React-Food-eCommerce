@@ -80,17 +80,17 @@ const AdminLoginForm = () => {
               <form onSubmit={handleSubmit(onSubmit)} className='text-maintext'>
                   <FormControl id="email">
                     <FormLabel>Tài khoản</FormLabel>
-                    <Input {...register('adminAccount',{required:true,})} onChange={handleInputData} type="text" focusBorderColor='#ff5e57' />
+                    <Input {...register('adminAccount',{required:true,})} onChange={handleInputData} type="text" focusBorderColor='#fa983a' />
                     {errors.adminAccount?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập tài khoản của bạn</span>}
                   </FormControl>
                   <FormControl id="password" mt={5}>
                     <FormLabel>Mật khẩu</FormLabel>
-                    <Input {...register('adminPassword',{required:true,minLength:6,})} onChange={handleInputData} type="password" focusBorderColor='#ff5e57' />
+                    <Input {...register('adminPassword',{required:true,minLength:6,})} onChange={handleInputData} type="password" focusBorderColor='#fa983a' />
                     {errors.adminPassword?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập mật khẩu</span>}
                     {errors.adminPassword?.type === 'minLength' && <span className="text-[#ee5253] mt-1 block">Mật khẩu phải lớn hơn 6 kí tự</span>}
                   </FormControl>
                   <Stack spacing={4} mt={5}>
-                    <Button type='submit' bg={'#ff5e57'} color={'white'} _hover={{bg: '',}}>Đăng nhập</Button>
+                    <Button type='submit' bg={'#fa983a'} color={'white'} _hover={{bg: '',}}>Đăng nhập</Button>
                   </Stack>
                 </form> 
             </Stack>

@@ -25,7 +25,7 @@ const BackToTop = () => {
   }
   return (
    <>
-    {isVisible && <div onClick={backToTop} className='fixed bottom-8 right-8 bg-[#ff7675] rounded-full z-20 animate-fadeBtn cursor-pointer'>
+    {isVisible && <div onClick={backToTop} className='fixed bottom-8 right-8 bg-[#e58e26] rounded-full z-20 animate-fadeBtn cursor-pointer'>
     <i className="fa-solid fa-chevron-up p-4 text-white"></i>
     </div>}
    </>

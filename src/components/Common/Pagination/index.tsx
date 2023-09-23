@@ -16,7 +16,7 @@ const Pagination = ({ pageSum, pageNum, changePage } : props) => {
           {[...Array(pageSum)].map((item,index)=> (
             <li onClick={()=>changePage(index + 1)} key={index} className='px-1'>
             <span className="px-3 py-1 text-maintext hover:text-maincolor duration-200" 
-            style={pageNum === index +1 ? {color: 'white',backgroundColor:'#ff5e57',borderRadius:'5px'} : {}}>{index+1}</span>
+            style={pageNum === index +1 ? {color: 'white',backgroundColor:'#fa983a',borderRadius:'5px'} : {}}>{index+1}</span>
           </li>
           ))}
           <li onClick={()=>changePage(pageNum + 1)} className='px-1'>

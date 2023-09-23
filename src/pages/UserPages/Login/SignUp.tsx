@@ -64,30 +64,30 @@ const SignUp = () => {
     <Flex align={'center'} justify={'center'} minH={'100vh'} bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} mb={20} py={5} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'} className='text-maincolor'>Đăng ký tài khoản CloudFood</Heading>
+          <Heading fontSize={'4xl'} className='text-maincolor'>Đăng ký tài khoản YumYum</Heading>
         </Stack>
         <Box rounded={'lg'} boxShadow={'2xl'} p={8}>
           <Stack spacing={4}>
             <form onSubmit={handleSubmit(onSubmit)} className='text-maintext'>
               <FormControl id="name">
                 <FormLabel>Tên người dùng</FormLabel>
-                <Input {...register('userName',{required:true,})} onChange={handleAddChange} type="text" focusBorderColor='#ff5e57' />
+                <Input {...register('userName',{required:true,})} onChange={handleAddChange} type="text" focusBorderColor='#fa983a' />
                 {errors.userName?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập tên của bạn</span>}
               </FormControl>
               <FormControl id="phone" mt={5}>
                 <FormLabel>Số điện thoại</FormLabel>
-                <Input {...register('phoneNumber',{required:true,})} onChange={handleAddChange} type="text" focusBorderColor='#ff5e57' />
+                <Input {...register('phoneNumber',{required:true,})} onChange={handleAddChange} type="text" focusBorderColor='#fa983a' />
                 {errors.phoneNumber?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập SĐT của bạn</span>}
               </FormControl>
               <FormControl id="email" mt={5}>
                 <FormLabel>Địa chỉ email</FormLabel>
-                <Input {...register('userMail',{required:true,pattern: emailRegex,})} onChange={handleAddChange} type="text" focusBorderColor='#ff5e57' />
+                <Input {...register('userMail',{required:true,pattern: emailRegex,})} onChange={handleAddChange} type="text" focusBorderColor='#fa983a' />
                 {errors.userMail?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập email của bạn</span>}
                 {errors.userMail?.type === 'pattern' && <span className="text-[#ee5253] mt-1 block">Email không đúng định dạng</span>}
               </FormControl>
               <FormControl id="password" mt={5}>
                 <FormLabel>Mật khẩu</FormLabel>
-                <Input {...register('userPassword',{required:true,minLength:6})} onChange={handleAddChange} type="password" focusBorderColor='#ff5e57' />
+                <Input {...register('userPassword',{required:true,minLength:6})} onChange={handleAddChange} type="password" focusBorderColor='#fa983a' />
                 {errors.userPassword?.type === 'required' && <span className="text-[#ee5253] mt-1 block">Hãy nhập mật khẩu</span>}
                 {errors.userPassword?.type === 'minLength' && <span className="text-[#ee5253] mt-1 block">Mật khẩu phải lớn hơn 6 kí tự</span>}
               </FormControl>
@@ -98,7 +98,7 @@ const SignUp = () => {
                   justify={'space-between'}>
                   <Link to='/dang-nhap' className='text-blue-600 mt-8'>Đã có tài khoản? Đăng nhập ngay</Link>
                 </Stack>
-                <Button type='submit' bg={'#ff5e57'} color={'white'} _hover={{bg: '',}}>Đăng ký</Button>
+                <Button type='submit' bg={'#fa983a'} color={'white'} _hover={{bg: '',}}>Đăng ký</Button>
               </Stack>
             </form>
           </Stack>

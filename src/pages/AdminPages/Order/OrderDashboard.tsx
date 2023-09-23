@@ -93,7 +93,7 @@ const OrderDashboard = () => {
           <InputGroup>
               <InputLeftElement
                 pointerEvents='none'
-                children={<SearchIcon color='#ff5e57' />}
+                children={<SearchIcon color='#fa983a' />}
               />
               <Input 
                 type='search' 
@@ -101,7 +101,7 @@ const OrderDashboard = () => {
                 placeholder='Tìm đơn hàng...' 
                 className='cursor-pointer text-maintext' 
                 htmlSize={30} width='auto'
-                focusBorderColor='#ff5e57'
+                focusBorderColor='#fa983a'
                 onChange={handleInputChange}
                 />
             </InputGroup>
@@ -134,12 +134,15 @@ const OrderDashboard = () => {
                         <th scope="col" className="py-3 px-6">
                             Ngày tạo
                         </th>
+                        <th scope="col" className="py-3 px-6">
+                              Chỉnh sửa lần cuối
+                         </th>
                         <th scope="col" className="py-3 px-6 w-[5%]">
                             Sửa
                         </th>
-                        <th scope="col" className="py-3 px-6 w-[5%]">
+                        {/* <th scope="col" className="py-3 px-6 w-[5%]">
                             Xóa
-                        </th>
+                        </th> */}
                     </tr>
                 </thead>
                   <tbody>
@@ -162,14 +165,15 @@ const OrderDashboard = () => {
                         <i title="Chưa thanh toán" className="fa-solid fa-circle-xmark text-red-400 text-[16px]"></i> : 
                         <i title="Đã thanh toán" className="fa-solid fa-circle-check text-green-400 text-[16px]"></i>}</td>
                         <td className="py-2 px-6">{convertDate(item.createdAt)}</td>
+                        <td className="py-2 px-6">{convertDate(item.updatedAt)}</td>
                         <td className="py-2 px-6">
                           <Link to='/admin/admin-donhang/capnhat' className="font-medium text-blue-600 hover:underline">
                             <span onClick={()=>setOrder(item)}>Sửa</span>
                           </Link>
                         </td>
-                        <td className="py-2 px-6">
+                        {/* <td className="py-2 px-6">
                             <span onClick={()=>getOrderId(item._id)} className="font-medium text-blue-600 hover:underline cursor-pointer">Xóa</span>
-                        </td>
+                        </td> */}
                      </tr>
                     ))}
                   </tbody>

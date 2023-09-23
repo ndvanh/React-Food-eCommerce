@@ -78,20 +78,20 @@ const LoginPage = () => {
       </div> :
       <Stack spacing={8} mt={10} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'} className='text-maincolor'>Đăng nhập CloudFood</Heading>
+          <Heading fontSize={'4xl'} className='text-maincolor'>Đăng nhập YumYum</Heading>
         </Stack>
         <Box rounded={'lg'} boxShadow={'2xl'} p={8}>
           <Stack spacing={4}>
             <form onSubmit={handleSubmit(onSubmit)} className='text-maintext'>
               <FormControl id="email">
                 <FormLabel>Địa chỉ email</FormLabel>
-                <Input {...register('userMail',{required:true,pattern: emailRegex,})} onChange={handleInputData} type="text" focusBorderColor='#ff5e57' />
+                <Input {...register('userMail',{required:true,pattern: emailRegex,})} onChange={handleInputData} type="text" focusBorderColor='#fa983a' />
                 {errors.userMail?.type === 'required' && <span className="text-maincolor mt-1 block">Hãy nhập email của bạn</span>}
                 {errors.userMail?.type === 'pattern' && <span className="text-maincolor mt-1 block">Email không đúng định dạng</span>}
               </FormControl>
               <FormControl id="password" mt={5}>
                 <FormLabel>Mật khẩu</FormLabel>
-                <Input {...register('userPassword',{required:true,minLength:6})} onChange={handleInputData} type="password" focusBorderColor='#ff5e57' />
+                <Input {...register('userPassword',{required:true,minLength:6})} onChange={handleInputData} type="password" focusBorderColor='#fa983a' />
                 {errors.userPassword?.type === 'required' && <span className="text-maincolor mt-1 block">Hãy nhập mật khẩu</span>}
                 {errors.userPassword?.type === 'minLength' && <span className="text-maincolor mt-1 block">Mật khẩu phải lớn hơn 6 kí tự</span>}
               </FormControl>
@@ -102,7 +102,7 @@ const LoginPage = () => {
                   justify={'space-between'}>
                   <Link to='/dang-ky' className='text-blue-600 mt-8'>Chưa có tài khoản? Đăng ký ngay</Link>
                 </Stack>
-                <Button type='submit' bg={'#ff5e57'} color={'white'} _hover={{bg: '',}}>Đăng nhập</Button>
+                <Button type='submit' bg={'#fa983a'} color={'white'} _hover={{bg: '',}}>Đăng nhập</Button>
               </Stack>
             </form>
           </Stack>

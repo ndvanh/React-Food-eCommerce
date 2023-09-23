@@ -51,7 +51,7 @@ const LinkItems: Array<LinkItemProps> = [
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const linkActive = ({isActive}:any) => ({
     color : isActive ? 'white' : '' ,
-    backgroundColor  : isActive ? '#ff5e57' : '',
+    backgroundColor  : isActive ? '#fa983a' : '',
     display : isActive ? 'block' : '',
   })
   return (
@@ -67,7 +67,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       <Flex h="20" alignItems="center" mx="4" justifyContent="space-between">
        <Link to='/admin'>
        <Text fontSize="2xl" className='text-maincolor font-bold'>
-          CloudFood Admin
+          YumYum Admin
         </Text>
        </Link>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
@@ -135,7 +135,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         fontWeight="bold"
         className='text-maincolor'
         >
-        CloudFood Admin
+        YumYum Admin
       </Text>
       </Link>
       <HStack spacing={{ base: '0', md: '6' }}>

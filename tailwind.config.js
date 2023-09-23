@@ -21,8 +21,8 @@ module.exports = {
         current: 'currentColor',
         'maintext':'#576574',
         'text2':'#dfe6e9',
-        'maincolor':'#ff5e57',
-        'footercolor':'#ffeae3',
+        'maincolor':'#fa983a',
+        'footercolor':'#f8c291',
       },
       display: ["group-hover"],
       keyframes: {

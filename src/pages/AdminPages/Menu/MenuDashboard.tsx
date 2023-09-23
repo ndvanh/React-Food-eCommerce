@@ -69,7 +69,7 @@ const MenuDashboard = () => {
         <InputGroup>
           <InputLeftElement
             pointerEvents='none'
-            children={<SearchIcon color='#ff5e57' />}
+            children={<SearchIcon color='#fa983a' />}
           />
           <Input 
             type='search' 
@@ -77,7 +77,7 @@ const MenuDashboard = () => {
             placeholder='Tìm menu...' 
             className='cursor-pointer text-maintext' 
             htmlSize={25} width='auto'
-            focusBorderColor='#ff5e57'
+            focusBorderColor='#fa983a'
             value = {input}
             onChange={handleInputChange}
             />

@@ -85,7 +85,7 @@ const UserDashboard = () => {
         </div>
         <div className='ml-5 xl:ml-0 xl:mt-5'>
           <InputGroup>
-            <InputLeftElement pointerEvents='none' children={<SearchIcon color='#ff5e57' />}
+            <InputLeftElement pointerEvents='none' children={<SearchIcon color='#fa983a' />}
             />
             <Input 
               type='search' 
@@ -93,7 +93,7 @@ const UserDashboard = () => {
               placeholder='Tìm người dùng...' 
               className='cursor-pointer text-maintext' 
               htmlSize={30} width='auto'
-              focusBorderColor='#ff5e57'
+              focusBorderColor='#fa983a'
               onChange={handleInputChange}
               />
             </InputGroup>

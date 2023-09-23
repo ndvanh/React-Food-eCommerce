@@ -42,8 +42,8 @@ return (
   <section className='mt-10 lg:px-5'>
     <div className='mb-8 ml-2 inline-block w-[200px]'>
       <Select placeholder='Sắp xếp theo' 
-       borderColor='#ff5e57'
-       focusBorderColor='#ff5e57'
+       borderColor='#fa983a'
+       focusBorderColor='#fa983a'
        color='#576574'
        className='cursor-pointer'
        value = {selected}

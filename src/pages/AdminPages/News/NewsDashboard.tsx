@@ -79,7 +79,7 @@ const NewsDashboard = () => {
         <InputGroup>
           <InputLeftElement
             pointerEvents='none'
-            children={<SearchIcon color='#ff5e57' />}
+            children={<SearchIcon color='#fa983a' />}
           />
           <Input 
             type='search' 
@@ -87,7 +87,7 @@ const NewsDashboard = () => {
             placeholder='Tìm tin tức...' 
             className='cursor-pointer text-maintext' 
             htmlSize={30} width='auto'
-            focusBorderColor='#ff5e57'
+            focusBorderColor='#fa983a'
             onChange={handleInputChange}
             />
           </InputGroup>
