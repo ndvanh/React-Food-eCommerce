@@ -11,7 +11,7 @@ const ProductItem = ({product} : productItem) => {
   const {handleAddToCart} : any = useContext(FoodContext)
   return (
    <>
-     <div className='border-[1px] rounded-[10px] p-3 shadow-md flex flex-col justify-between' key={product._id}>
+     <div className='border-[1px] rounded-[10px] p-3 shadow-md flex flex-col justify-between h-full' key={product._id}>
         <Link to={`/thuc-don/${product.prodType}/${product.prodName}`}>
           <div className='relative pt-[100%]'>
             <img className='absolute top-0 left-0 h-full w-full object-cover rounded-[10px] cursor-pointer' src={product.prodImg} alt={product.prodName} loading='lazy' />
